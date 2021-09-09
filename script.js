@@ -27,6 +27,8 @@ function criteria() {
     if (!lowercase && !uppercase && !numbers && !specialCharacters) {
         alert("Please select at least one character type.");
         criteria();
+    } else {
+        length();
     }
 }
 
@@ -35,6 +37,8 @@ function length() {
     if (passwordLength > 128 || passwordLength < 8) {
         alert("Please enter a number between 8 and 128.")
         length();
+    } else { 
+        generatePassword();
     }
 }
 // length();
@@ -49,33 +53,82 @@ var specialCharactersArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", 
 var uppercaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var allArray = specialCharactersArray.concat(uppercaseArray, lowercaseArray, numbersArray);
+// var numbersLowerUpperArray = numbers.concat(uppercaseArray, lowercaseArray);
+// var specialUpperLowerArray = specialCharactersArray.concat(uppercaseArray, lowercaseArray, numbersArray);
+// var specialLowerNumbersArray = specialCharactersArray.concat(lowercaseArray, numbersArray);
+// var specialUpperNumbersArray = specialCharactersArray.concat(uppercaseArray, numbersArray);
+// var upperLowerArray = uppercaseArray.concat(lowercaseArray);
+// var
+
+// console.log(allArray);
 
 var randomSpecialCharacter = Math.floor(Math.random() * specialCharactersArray.length);
 var randomUppercaseCharacter = Math.floor(Math.random() * uppercaseArray.length);
 var randomLowercaseCharacter = Math.floor(Math.random() * lowercaseArray.length);
 var randomNumber = Math.floor(Math.random() * numbersArray.length);
+var randomAll = Math.floor(Math.random() * allArray.length);
+var random;
 // console.log(randomSpecialCharacter);
 // console.log(randomUppercaseCharacter);
 // console.log(randomLowercaseCharacter);
 // console.log(randomNumber);
+// console.log(randomAll)
 
 var password = [];
 
-function generatePassword(a,b,c,d) {
+function generatePassword() {
     if (lowercase && uppercase && numbers && specialCharacters) {
         password.push(specialCharactersArray[randomSpecialCharacter]);
         password.push(uppercaseArray[randomUppercaseCharacter]);
         password.push(lowercaseArray[randomLowercaseCharacter]);
         password.push(numbersArray[randomNumber]);
+        for (let i = 0; i < passwordLength - 4; i++) {
+            randomAll = Math.floor(Math.random() * allArray.length);
+            password.push(allArray[randomAll]);
+        }
+    } else if (lowercase && uppercase && numbers && !specialCharacters) {
+        password.push(uppercaseArray[randomUppercaseCharacter]);
+        password.push(lowercaseArray[randomLowercaseCharacter]);
+        password.push(numbersArray[randomNumber]);
+        for (let i = 0; i < passwordLength - 3; i++) {
+            allArraySliced = allArray.slice(27);
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (lowercase && uppercase && !numbers && specialCharacters) {
+        password.push(uppercaseArray[randomUppercaseCharacter]);
+        password.push(lowercaseArray[randomLowercaseCharacter]);
+        password.push(specialCharactersArray[randomSpecialCharacter]);
+        for (let i = 0; i < passwordLength - 3; i++) {
+            allArraySliced = allArray.slice(0, 79);
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (lowercase && !uppercase && numbers && specialCharacters) {
+        password.push(numbersArray[randomNumber]);
+        password.push(lowercaseArray[randomLowercaseCharacter]);
+        password.push(specialCharactersArray[randomSpecialCharacter]);
+        for (let i = 0; i < passwordLength - 3; i++) {
+            allArraySliced = allArray.slice(0, 53).concat(allArray.slice(79));
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (!lowercase && uppercase && numbers && specialCharacters) {
+        password.push(numbersArray[randomNumber]);
+        password.push(uppercaseArray[randomUppercaseCharacter]);
+        password.push(specialCharactersArray[randomSpecialCharacter]);
+        for (let i = 0; i < passwordLength - 3; i++) {
+            allArraySliced = allArray.slice(0, 53).concat(allArray.slice(79));
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
     }
-    console.log(password);
+    
 }
 
-// criteria();
-// length();
-// generatePassword();
+criteria();
 
-// for (let i = 0; i < passwordLength.length - 4; i++) {
-//     const element = array[i];
-    
-// }
+// special (0-26); upper (27-52); lower (53-78); number (79-88)
+console.log(password);
+// console.log(allArray);
