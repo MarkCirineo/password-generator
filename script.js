@@ -123,7 +123,55 @@ function generatePassword() {
             random = Math.floor(Math.random() * allArraySliced.length);
             password.push(allArraySliced[random])
         }
-    }
+    } else if (lowercase && uppercase && !numbers && !specialCharacters) {
+        password.push(lowercaseArray[randomLowercaseCharacter]);
+        password.push(uppercaseArray[randomUppercaseCharacter]);
+        for (let i = 0; i < passwordLength - 2; i++) {
+            allArraySliced = allArray.slice(27, 79);
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (lowercase && !uppercase && !numbers && specialCharacters) {
+        password.push(lowercaseArray[randomLowercaseCharacter]);
+        password.push(specialCharactersArray[randomSpecialCharacter]);
+        for (let i = 0; i < passwordLength - 2; i++) {
+            allArraySliced = allArray.slice(0, 27).concat(allArray.slice(53, 79));
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (!lowercase && !uppercase && numbers && specialCharacters) {
+        password.push(numbersArray[randomNumber]);
+        password.push(specialCharactersArray[randomSpecialCharacter]);
+        for (let i = 0; i < passwordLength - 2; i++) {
+            allArraySliced = allArray.slice(0, 27).concat(allArray.slice(79));
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (!lowercase && uppercase && numbers && !specialCharacters) {
+        password.push(uppercaseArray[randomUppercaseCharacter]);
+        password.push(numbersArray[randomNumber]);
+        for (let i = 0; i < passwordLength - 2; i++) {
+            allArraySliced = allArray.slice(27, 53).concat(allArray.slice(79));
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (lowercase && !uppercase && numbers && !specialCharacters) {
+        password.push(lowercaseArray[randomLowercaseCharacter]);
+        password.push(numbersArray[randomNumber]);
+        for (let i = 0; i < passwordLength - 2; i++) {
+            allArraySliced = allArray.slice(53);
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } else if (!lowercase && uppercase && !numbers && specialCharacters) {
+        password.push(uppercaseArray[randomUppercaseCharacter]);
+        password.push(specialCharactersArray[randomSpecialCharacter]);
+        for (let i = 0; i < passwordLength - 2; i++) {
+            allArraySliced = allArray.slice(0, 53);
+            random = Math.floor(Math.random() * allArraySliced.length);
+            password.push(allArraySliced[random])
+        }
+    } 
     
 }
 
