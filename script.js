@@ -11,7 +11,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// generateBtn.addEventListener("click", writePassword);
 
 var lowercase;
 var uppercase;
@@ -41,27 +41,12 @@ function length() {
         generatePassword();
     }
 }
-// length();
-// console.log(passwordLength)
-// criteria();
-// console.log(lowercase);
-// console.log(uppercase);
-// console.log(numbers);
-// console.log(specialCharacters);
 
 var specialCharactersArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "{", "}", "~"];
 var uppercaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var allArray = specialCharactersArray.concat(uppercaseArray, lowercaseArray, numbersArray);
-// var numbersLowerUpperArray = numbers.concat(uppercaseArray, lowercaseArray);
-// var specialUpperLowerArray = specialCharactersArray.concat(uppercaseArray, lowercaseArray, numbersArray);
-// var specialLowerNumbersArray = specialCharactersArray.concat(lowercaseArray, numbersArray);
-// var specialUpperNumbersArray = specialCharactersArray.concat(uppercaseArray, numbersArray);
-// var upperLowerArray = uppercaseArray.concat(lowercaseArray);
-// var
-
-// console.log(allArray);
 
 var randomSpecialCharacter = Math.floor(Math.random() * specialCharactersArray.length);
 var randomUppercaseCharacter = Math.floor(Math.random() * uppercaseArray.length);
@@ -69,11 +54,6 @@ var randomLowercaseCharacter = Math.floor(Math.random() * lowercaseArray.length)
 var randomNumber = Math.floor(Math.random() * numbersArray.length);
 var randomAll = Math.floor(Math.random() * allArray.length);
 var random;
-// console.log(randomSpecialCharacter);
-// console.log(randomUppercaseCharacter);
-// console.log(randomLowercaseCharacter);
-// console.log(randomNumber);
-// console.log(randomAll)
 
 var password = [];
 
@@ -192,11 +172,7 @@ function generatePassword() {
             password.push(lowercaseArray[randomLowercaseCharacter]);
         }
     }
-    
+    console.log(password);
 }
 
-criteria();
-
 // special (0-26); upper (27-52); lower (53-78); number (79-88)
-console.log(password);
-// console.log(allArray);
