@@ -17,6 +17,7 @@ var lowercase;
 var uppercase;
 var numbers;
 var specialCharacters;
+var passwordLength
 
 function criteria() {
     lowercase = confirm("Do you want lowercase letters?");
@@ -24,8 +25,19 @@ function criteria() {
     numbers = confirm("Do you want numbers?");
     specialCharacters = confirm("Do you want special characters?");
 }
+
+function length() {
+    passwordLength = prompt("How long do you want the password to be. (enter a number between 8 and 128)");
+    if (passwordLength > 128 || passwordLength < 8) {
+        alert("Please enter a number between 8 and 128.")
+        length();
+    }
+}
+// length();
+// console.log(passwordLength)
 // criteria();
 // console.log(lowercase);
 // console.log(uppercase);
 // console.log(numbers);
 // console.log(specialCharacters);
+
