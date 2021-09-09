@@ -24,6 +24,10 @@ function criteria() {
     uppercase = confirm("Do you want uppercase letters?");
     numbers = confirm("Do you want numbers?");
     specialCharacters = confirm("Do you want special characters?");
+    if (!lowercase && !uppercase && !numbers && !specialCharacters) {
+        alert("Please select at least one character type.");
+        criteria();
+    }
 }
 
 function length() {
