@@ -171,7 +171,27 @@ function generatePassword() {
             random = Math.floor(Math.random() * allArraySliced.length);
             password.push(allArraySliced[random])
         }
-    } 
+    } else if (!lowercase && !uppercase && !numbers && specialCharacters) {
+        for (let i = 0; i < passwordLength; i++) {
+            randomSpecialCharacter = Math.floor(Math.random() * specialCharactersArray.length);
+            password.push(specialCharactersArray[randomSpecialCharacter]);
+        }
+    } else if (!lowercase && !uppercase && numbers && !specialCharacters) {
+        for (let i = 0; i < passwordLength; i++) {
+            randomNumber = Math.floor(Math.random() * numbersArray.length);
+            password.push(numbersArray[randomNumber]);
+        }
+    } else if (!lowercase && uppercase && !numbers && !specialCharacters) {
+        for (let i = 0; i < passwordLength; i++) {
+            randomUppercaseCharacter = Math.floor(Math.random() * uppercaseArray.length);
+            password.push(uppercaseArray[randomUppercaseCharacter]);
+        }
+    } else if (lowercase && !uppercase && !numbers && !specialCharacters) {
+        for (let i = 0; i < passwordLength; i++) {
+            randomLowercaseCharacter = Math.floor(Math.random() * lowercaseArray.length);
+            password.push(lowercaseArray[randomLowercaseCharacter]);
+        }
+    }
     
 }
 
