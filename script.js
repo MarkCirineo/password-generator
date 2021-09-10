@@ -2,22 +2,22 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   var passwordFinal = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+//   passwordText.value = password;
 
-}
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// }
 
 var lowercase;
 var uppercase;
 var numbers;
 var specialCharacters;
 var passwordLength
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", criteria);
 
 function criteria() {
     lowercase = confirm("Do you want lowercase letters?");
@@ -172,7 +172,15 @@ function generatePassword() {
             password.push(lowercaseArray[randomLowercaseCharacter]);
         }
     }
-    console.log(password);
+    printPassword();
 }
 
 // special (0-26); upper (27-52); lower (53-78); number (79-88)
+
+function printPassword() {
+    passwordString = password.join("");
+    var passwordText = document.querySelector("#password");
+    passwordText.value = passwordString;
+    password = [];
+}
+
